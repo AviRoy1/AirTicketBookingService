@@ -5,21 +5,28 @@ const { BookingService } = require('../services/index');
 const { createChannel, publishMessage } = require('../utils/messageQueue');
 const { REMINDER_BINDING_KEY } = require('../config/server-config');
 
-const bookingService = new BookingService();
+const bookingService = new BookingService(); 
 
 class BookingController {
 
     constructor() {
     }
 
-    async sendMessageToQueue(req, res){
-        const channel = await createChannel();
-        const data = {message: 'Success'};
-        publishMessage(channel, REMINDER_BINDING_KEY, JSON.stringify(data));
-        return res.status(200).json({
-            message: 'Succesfully published the event'
-        });
-    }
+    // async sendMessageToQueue(req, res){
+    //     const channel = await createChannel();
+    //     const payload = {
+    //         data : {
+    //             subject: 'This is notification from queue',
+    //             content: 'Some queue will subscribe this',
+    //             recepientEmail: 'ravijit512@gmail.com',
+    //             notificaionTime: '2023-01-15T09:49:00'
+    //         }
+    //     };
+    //     publishMessage(channel, REMINDER_BINDING_KEY, JSON.stringify(payload));
+    //     return res.status(200).json({
+    //         message: 'Succesfully published the event'
+    //     });
+    // }
 
     async create (req, res) {
         try {
