@@ -8,8 +8,12 @@ const db = require('./models/index');
 const setupAndStartServer = () => {
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({extended: true}));
-
-    app.use('/api',apiRouter);
+    // app.use('/bookingservice/api/v1/home' , (req,res) => {
+    //     return res.json({
+    //         message: ' Hitting the booking service ',
+    //     });
+    // });
+    app.use('/bookingservice/api',apiRouter);
 
     app.listen(PORT,()=>{
         console.log(`Server is running on ${PORT}`);

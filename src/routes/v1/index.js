@@ -7,6 +7,11 @@ const { BookingController } = require('../../controller/index');
 const bookingController = new BookingController();
 const router = express.Router();
 
+router.get('/info', (req,res)=>{
+    return res.json({
+        message: 'Response from routers',
+    });
+})
 router.post('/bookings', bookingController.create);
 // router.post('/publish', bookingController.sendMessageToQueue);
 
